@@ -18,12 +18,21 @@
     border: 0px;
     border-radius: 10px;
     color: white;
-    font-size: 2rem;
-    padding: 1rem;
-    margin: 1rem 1.5rem;
+    font-size: 1rem;
+    padding: 0.7rem;
+    margin: 0.2rem;
 }
 
 button {
     font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 800px) {
+    .o-header-buttons {
+        font-size: 2rem;
+        padding: 1rem;
+        margin: 1rem 1rem;
+    }
 }
