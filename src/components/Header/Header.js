@@ -1,10 +1,16 @@
 import React from 'react';
-
+import './Header.css'
 const Header = () => (
     <>
-        <section>
-            <h2>Header</h2>
-        </section>
+        <header className="o-header">
+            <button className="o-header-buttons">Logo</button>
+
+            <div>
+                <button className="o-header-buttons">Comunidad</button>
+                <button className="o-header-buttons">Perfil</button>
+                <button className="o-header-buttons">Editor</button>
+            </div>
+        </header>
     </>
 );
 
