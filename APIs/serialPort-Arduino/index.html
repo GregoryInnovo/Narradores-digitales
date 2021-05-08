@@ -1,0 +1,61 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node arduino</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <!-- <script src="./lib.js"></script> -->
+    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <a id='count'>0</a>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var info;
+        var socket = io();
+        socket.on('arduino:data', function(data){
+            console.log(data)
+            info = data.value;
+            increment();
+        })
+
+        
+        let cwidth = 640
+        let cheight = 360
+
+        let count = 0
+        let x = 0;
+
+        function setup() {
+            createCanvas(cwidth, cheight)   
+        }
+
+        function draw() {
+            background(220)
+            textSize(128)
+            textAlign(CENTER, CENTER)
+            text(count, width / 2, height / 2)
+            rect(10+x, 10, 155, 155);
+        }
+        
+        function increment() {
+            count++
+            x = count*50;
+            if(count == 4) {
+                
+                console.log('im happy that this fk works!')
+            }
+        }
+
+        
+    </script>
+
+</body>
+</html>
