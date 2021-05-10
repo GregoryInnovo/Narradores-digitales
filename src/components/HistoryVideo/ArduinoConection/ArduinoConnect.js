@@ -5,8 +5,8 @@ const http = require("http");
 var SerialPort = require("serialport");
 
 
-const { Server } = require("socket.io");
-const io = new Server('http://localhost:3000/');
+// const { Server } = require("socket.io");
+// const io = 'http://localhost:3000/';
 
 
 class ArduinoConnect extends Component {

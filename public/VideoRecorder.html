@@ -26,20 +26,56 @@
       integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./styles/main.css" >
+    <link rel="stylesheet" href="../styles/main.css" />
   </head>
   
   <body>
     <script src="/socket.io/socket.io.js"></script>
 
     <header class="o-header">
-      <button class="o-header-buttons">Logo</button>
+      <button class="o-header-buttons" onclick="window.location.href='/'">Logo</button>
       <div>
         <button class="o-header-buttons">Comunidad</button>
-        <button class="o-header-buttons" onclick="window.location.href='VideoRecorder.html'">Editor</button>
+        <button class="o-header-buttons">Editor</button>
         <button class="o-header-buttons">Perfil</button>
       </div>
     </header>
 
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var info;
+      var socket = io();
+      socket.on("arduino:data", function (data) {
+        console.log(data);
+        info = data.value;
+        increment();
+      });
+
+      let cwidth = 640;
+      let cheight = 360;
+
+      let count = 0;
+      let x = 0;
+
+      function setup() {
+        createCanvas(cwidth, cheight);
+      }
+
+      function draw() {
+        background(220);
+        textSize(128);
+        textAlign(CENTER, CENTER);
+        text(count, width / 2, height / 2);
+        rect(10 + x, 10, 155, 155);
+      }
+
+      function increment() {
+        count++;
+        x = count * 50;
+        if (count == 4) {
+          console.log("im happy that this fk works!");
+        }
+      }
+    </script>
   </body>
 </html>
