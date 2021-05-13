@@ -74,7 +74,7 @@ setup = () => {
 
   let renderer = createCanvas(cwidth, cheight);
   renderer.parent("recorder-container");
-
+  renderer.id("canvas-container")
   frameRate(frate);
   button = createButton("record");
   waits = createButton("stop");
@@ -87,11 +87,16 @@ setup = () => {
   // soundFile = new p5.SoundFile();
 
   button.mousePressed(() => (recording = true));
+  button.class("btn-record");
   button.parent("recorder-container");
+
   waits.mousePressed(() => (waitsing = true));
   waits.parent("recorder-container");
+  waits.class("btn-stop");
+
   pause.mousePressed(() => (pausing = true));
   pause.parent("recorder-container");
+  pause.class("btn-pause");
 };
 
 draw = () => {

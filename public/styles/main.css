@@ -139,3 +139,11 @@ button {
 /*  index html */
 
 /* VideoRecorder */
+#canvas-container {
+  border-radius: 40px;
+}
+
+.btn-record, .btn-stop, .btn-pause {
+  background-color: #20ced3;
+  color: #000;
+}
