@@ -4,26 +4,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <title>File</title>
+    <meta name="description" content="Web site created using create-react-app"/>
 
+    <title>Narradores Digitales</title>
+    <!--  -->
     <script src="https://unpkg.com/h264-mp4-encoder/embuild/dist/h264-mp4-encoder.web.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5.recorder@0.0.7/dist/p5.recorder.js"></script>
-    <script
-      src="https://cdn.socket.io/3.1.3/socket.io.min.js"
-      integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="../styles/main.css" />
+    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/socket.io/socket.io.js" />
+    <!-- styles -->
+    <link rel="stylesheet" href="/public/styles/main.css" >
+    <!--  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
   </head>
 
   <body>
     <script src="/socket.io/socket.io.js"></script>
-
+    <!-- 
     <header class="o-header">
       <button class="o-header-buttons" onclick="window.location.href='/'">
         Logo
@@ -33,166 +32,223 @@
         <button class="o-header-buttons">Editor</button>
         <button class="o-header-buttons">Perfil</button>
       </div>
-    </header>
+    </header> -->
+    
+    <!--  -->
+    <nav class="navbar navbar-expand-lg navbar-light navcont">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Logo</a>
 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item nav-rule">
+              <a class="nav-link active" aria-current="page" href="#">Comunidad</a>
+            </li>
+            <li class="nav-item nav-rule">
+              <a class="nav-link" href="#">Editor</a>
+            </li>
+            <li class="nav-item nav-rule">
+              <a class="nav-link" href="#">Perfil</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+    <!--  -->
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var info;
-      var socket = io();
 
-      socket.on("arduino:data", function (data) {
-        // console.log(data);
-        info = parseInt(data.value);
-        // console.log(info);
-        // var a = info === 1;
-        // console.log(a);
-        switch (info) {
-          case 1:
-            increment()
-            break;
-          case 2:
-            console.log(`Se realiza la acción ${info}`)
-            break;
-          case 3:
-            console.log(`Se realiza la acción ${info}`)
-            break;
-          case 4:
-            console.log(`Se realiza la acción ${info}`)
-            break;
-          case 5:
-            console.log(`Se realiza la acción ${info}`)
-            break;
-        
-          default:
-            break;
-        }
-      
-      });
+    <section>
+      <div class="container">
+        <div class="col-nd-12">
+          <div class="row">
+            <div class="cont-video">
+              <script>
+                var info;
+                var socket = io();
+          
+                socket.on("arduino:data", function (data) {
+                  // console.log(data);
+                  info = parseInt(data.value);
+                  // console.log(info);
+                  // var a = info === 1;
+                  // console.log(a);
+                  switch (info) {
+                    case 1:
+                      increment()
+                      break;
+                    case 2:
+                      console.log(`Se realiza la acción ${info}`)
+                      break;
+                    case 3:
+                      console.log(`Se realiza la acción ${info}`)
+                      break;
+                    case 4:
+                      console.log(`Se realiza la acción ${info}`)
+                      break;
+                    case 5:
+                      console.log(`Se realiza la acción ${info}`)
+                      break;
+                  
+                    default:
+                      break;
+                  }
+                
+                });
+          
+                let cwidth = 640;
+                let cheight = 360;
+                let button;
+                let waits;
+                let pause;
+                let encoder;
+          
+                const frate = 30; // frame rate
+                const numFrames = 100; // num of frames to record
+                let recording = false;
+                let waitsing = false;
+                let pausing = false;
+                let recordedFrames = 0;
+                let count = 0;
+          
+                let x = 0;
+          
+                function increment() {
+                  count++;
+                  x = count;
+                  if (count == 100) {
+                    console.log("Time!");
+                  }
+                }
+          
+                let mic, recorder, soundFile;
+                let state = 0;
+          
+                preload = () => {
+                  HME.createH264MP4Encoder().then((enc) => {
+                    encoder = enc;
+                    encoder.outputFilename = "test";
+                    encoder.width = cwidth;
+                    encoder.height = cheight;
+                    encoder.frameRate = frate;
+                    encoder.kbps = 50000; // video quality
+                    encoder.groupOfPictures = 10; // lower if you have fast actions.
+                    encoder.initialize();
+                  });
+                };
+          
+                setup = () => {
+                  createCanvas(cwidth, cheight);
+                  frameRate(frate);
+                  button = createButton("record");
+                  waits = createButton("stop");
+                  pause = createButton("pause");
+          
+                  // mic = new p5.AudioIn()
+                  // mic.start();
+                  // recorder = new p5.SoundRecorder();
+                  // recorder.setInput(mic);
+                  // soundFile = new p5.SoundFile();
+          
+                  button.mousePressed(() => (recording = true));
+                  waits.mousePressed(() => (waitsing = true));
+                  pause.mousePressed(() => (pausing = true));
+                };
+          
+                draw = () => {
+                  background(220);
+                  textSize(128);
+                  textAlign(CENTER, CENTER);
+                  text(count, width / 2, height / 2);
+                  count++;
+                  rect(10 + x, 10, 155, 155);
+                  record();
+          
+                  pauseMovie();
+          
+                  stopMovie();
+                };
+          
+                function record() {
+                  // keep adding new frame
+                  if (recording) {
+                    console.log("recording");
+                    encoder.addFrameRgba(
+                      drawingContext.getImageData(0, 0, encoder.width, encoder.height)
+                        .data
+                    );
+                    recordedFrames++;
+                    // if (mic.enabled) {
+                    //     // indicar al grabador que grabe en el objeto p5.SoundFile, que usaremos para la reproducción
+                    //     recorder.record(soundFile);
+                    //     console.log('audio')
+                    // }
+                  }
+                }
+          
+                function pauseMovie() {
+                  if (recording == true && pausing == true) {
+                    recording = false;
+                    console.log("pause");
+                  } else {
+                    pausing = false;
+                  }
+                }
+          
+                function stopMovie() {
+                  // finalize encoding and export as mp4
+                  if (waitsing) {
+                    // recorder.stop();
+                    // soundFile.play();
+                    // saveSound(soundFile, 'mySound.wav');
+          
+                    waitsing = false;
+                    recording = false;
+                    recordedFrames = 0;
+                    console.log("recording stop");
+          
+                    encoder.finalize();
+                    const uint8Array = encoder.FS.readFile(encoder.outputFilename);
+                    const anchor = document.createElement("a");
+                    anchor.href = URL.createObjectURL(
+                      new Blob([uint8Array], { type: "video/mp4" })
+                    );
+                    anchor.download = encoder.outputFilename;
+                    anchor.click();
+                    encoder.delete();
+          
+                    preload(); // reinitialize encoder
+                  }
+                }
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <div class="cont-footer">
+      <div class="container px-4 py-5" id="icon-grid">
+        <h2 class="pb-2 border-bottom"  style="TEXT-ALIGN: center;">Narraciones Digitales</h2>
 
-      let cwidth = 640;
-      let cheight = 360;
-      let button;
-      let waits;
-      let pause;
-      let encoder;
+      </div>
+      <div class="footer-privacity">
+        <p>Espacio pensado en los niños, para que puedan explorar toda su imaginacion y creatividad, 
+          mediante historias
+        </p>
+      </div>
+    </div>
 
-      const frate = 30; // frame rate
-      const numFrames = 100; // num of frames to record
-      let recording = false;
-      let waitsing = false;
-      let pausing = false;
-      let recordedFrames = 0;
-      let count = 0;
-
-      let x = 0;
-
-      function increment() {
-        count++;
-        x = count;
-        if (count == 100) {
-          console.log("Time!");
-        }
-      }
-
-      let mic, recorder, soundFile;
-      let state = 0;
-
-      preload = () => {
-        HME.createH264MP4Encoder().then((enc) => {
-          encoder = enc;
-          encoder.outputFilename = "test";
-          encoder.width = cwidth;
-          encoder.height = cheight;
-          encoder.frameRate = frate;
-          encoder.kbps = 50000; // video quality
-          encoder.groupOfPictures = 10; // lower if you have fast actions.
-          encoder.initialize();
-        });
-      };
-
-      setup = () => {
-        createCanvas(cwidth, cheight);
-        frameRate(frate);
-        button = createButton("record");
-        waits = createButton("stop");
-        pause = createButton("pause");
-
-        // mic = new p5.AudioIn()
-        // mic.start();
-        // recorder = new p5.SoundRecorder();
-        // recorder.setInput(mic);
-        // soundFile = new p5.SoundFile();
-
-        button.mousePressed(() => (recording = true));
-        waits.mousePressed(() => (waitsing = true));
-        pause.mousePressed(() => (pausing = true));
-      };
-
-      draw = () => {
-        background(220);
-        textSize(128);
-        textAlign(CENTER, CENTER);
-        text(count, width / 2, height / 2);
-        count++;
-        rect(10 + x, 10, 155, 155);
-        record();
-
-        pauseMovie();
-
-        stopMovie();
-      };
-
-      function record() {
-        // keep adding new frame
-        if (recording) {
-          console.log("recording");
-          encoder.addFrameRgba(
-            drawingContext.getImageData(0, 0, encoder.width, encoder.height)
-              .data
-          );
-          recordedFrames++;
-          // if (mic.enabled) {
-          //     // indicar al grabador que grabe en el objeto p5.SoundFile, que usaremos para la reproducción
-          //     recorder.record(soundFile);
-          //     console.log('audio')
-          // }
-        }
-      }
-
-      function pauseMovie() {
-        if (recording == true && pausing == true) {
-          recording = false;
-          console.log("pause");
-        } else {
-          pausing = false;
-        }
-      }
-
-      function stopMovie() {
-        // finalize encoding and export as mp4
-        if (waitsing) {
-          // recorder.stop();
-          // soundFile.play();
-          // saveSound(soundFile, 'mySound.wav');
-
-          waitsing = false;
-          recording = false;
-          recordedFrames = 0;
-          console.log("recording stop");
-
-          encoder.finalize();
-          const uint8Array = encoder.FS.readFile(encoder.outputFilename);
-          const anchor = document.createElement("a");
-          anchor.href = URL.createObjectURL(
-            new Blob([uint8Array], { type: "video/mp4" })
-          );
-          anchor.download = encoder.outputFilename;
-          anchor.click();
-          encoder.delete();
-
-          preload(); // reinitialize encoder
-        }
-      }
-    </script>
+    <div class="footer--btn">
+      <p>Copyright &copy;2021 codeOpacity. designed by <span>Grupo 3, Computacion Fisica</span></p>
+    </div>
+    <!-- link boostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script> 
   </body>
 </html>

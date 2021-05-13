@@ -5,6 +5,9 @@
   --primary-color: gray;
   --secondary-color: rgb(63, 63, 63);
   --extra-color: white;
+
+  --blue1:#20ced3;
+  --blue2:#a5eaef;
 }
 
 body {
@@ -59,3 +62,80 @@ button {
       margin: 1rem 1rem;
   }
 }
+/* ------------------------------------- */
+/* nav */
+.navcont {
+  background:#202020;
+}
+.navbar{
+  padding: 1rem 3rem;
+}
+.navbar-collapse{
+  padding: 7px 0;
+}
+.nav-rule{
+  padding: 0 0 3px;
+}
+#navbarSupportedContent > ul > li:nth-child(n) > a{
+  color: #fff;
+  font-weight: 300;
+  padding: 0 0.8rem;
+  
+}
+#navbarSupportedContent > ul > li:nth-child(n) > a:hover{
+  color: rgb(190, 190, 190);
+  font-weight: 400;
+  padding: 0 0.9rem;
+}
+#navbarSupportedContent > button{
+  background: rgb(0, 0, 0);
+  font-weight: 600;
+  padding: 0.4rem 1.4rem;
+  border-radius: 30px;
+}
+
+/* footer */
+.cont-footer{
+  background:#202020;
+  color: #fff;
+}
+.border-bottom {
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 0 !important;
+  border-bottom: 1px solid #dee2e6!important;
+}
+.footer-privacity{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  -ms-flex-align: center;
+}
+.footer-privacity p{
+  max-width: 600px;
+  line-height: 28px;
+  font-size: 16px;
+  margin-bottom: 40px;
+  margin-top: -20px;
+  margin-left: 100px;
+}
+.footer--btn{
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  -ms-flex-align: center;
+}
+.footer--btn p{
+  align-items: flex-start!important;
+  color: #fff;
+  font-size: 14px;
+  line-height: 3px;
+  padding: 9px 0;
+}
+/* --------------------------------- */
+/*  index html */
+
+/* VideoRecorder */
