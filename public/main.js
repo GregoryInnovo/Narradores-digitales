@@ -9,13 +9,13 @@ socket.on("arduino:data", function (data) {
   // console.log(a);
   switch (info) {
     case 1:
-      increment();
+      right();
       break;
     case 2:
-      console.log(`Se realiza la acción ${info}`);
+      left();
       break;
     case 3:
-      console.log(`Se realiza la acción ${info}`);
+      jump();
       break;
     case 4:
       console.log(`Se realiza la acción ${info}`);
@@ -44,14 +44,28 @@ let pausing = false;
 let recordedFrames = 0;
 let count = 0;
 
-let x = 0;
+let posX = 0;
+let posY = 0;
 
-function increment() {
-  count++;
-  x = count;
+function right() {
+  // count++;
+  posX = posX + 50;
   if (count == 100) {
     console.log("Time!");
   }
+}
+
+function left() {
+  posX = posX - 50;
+}
+
+function jump() {
+
+  var num = 80;
+  posY = posY - num;
+  setTimeout(() => {
+    posY = posY + num;
+  }, 100)
 }
 
 let mic, recorder, soundFile;
@@ -71,10 +85,9 @@ preload = () => {
 };
 
 setup = () => {
-
   let renderer = createCanvas(cwidth, cheight);
   renderer.parent("recorder-container");
-  renderer.id("canvas-container")
+  renderer.id("canvas-container");
   frameRate(frate);
   button = createButton("record");
   waits = createButton("stop");
@@ -105,7 +118,8 @@ draw = () => {
   textAlign(CENTER, CENTER);
   text(count, width / 2, height / 2);
   count++;
-  rect(10 + x, 10, 155, 155);
+
+  rect(10 + posX, 200 + posY, 155, 155);
   record();
 
   pauseMovie();
