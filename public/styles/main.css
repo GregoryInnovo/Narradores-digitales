@@ -139,11 +139,26 @@ button {
 /*  index html */
 
 /* VideoRecorder */
-#canvas-container {
-  border-radius: 40px;
+#recorder-container {
+  display:flex;
+  margin-top: 1.5rem;
 }
 
-.btn-record, .btn-stop, .btn-pause {
-  background-color: #20ced3;
+#canvas-container {
+  margin: auto;
+  border-radius: 30px;
+}
+
+.o-controller {
+  background-color: red;
+  margin: auto;
+  margin-top: 1.5rem;
+  text-align: center;
+  height: content-fit;
+  width: 70%;
+}
+
+#record, #stop, #pause {
+  margin: 0px 20px;
   color: #000;
 }
