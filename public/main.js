@@ -60,12 +60,11 @@ function left() {
 }
 
 function jump() {
-
   var num = 80;
   posY = posY - num;
   setTimeout(() => {
     posY = posY + num;
-  }, 100)
+  }, 100);
 }
 
 let mic, recorder, soundFile;
@@ -83,7 +82,9 @@ preload = () => {
     encoder.initialize();
   });
 };
+let img;
 
+let backgroundScene;
 setup = () => {
   let renderer = createCanvas(cwidth, cheight);
   renderer.parent("recorder-container");
@@ -92,7 +93,8 @@ setup = () => {
   button = createButton("record");
   waits = createButton("stop");
   pause = createButton("pause");
-
+  img = loadImage("./per.png");
+  backgroundScene = loadImage("./assets/Escenarios/Parque.jpg");
   // mic = new p5.AudioIn()
   // mic.start();
   // recorder = new p5.SoundRecorder();
@@ -119,7 +121,21 @@ draw = () => {
   text(count, width / 2, height / 2);
   count++;
 
-  rect(10 + posX, 200 + posY, 155, 155);
+  image(backgroundScene, 0, 0, 640, 360);
+
+  // image(img, 0 + posX, 0 + posY);
+  // Personaje que se dibuja en la interfaz
+  // image(img, 0 + posX, height / 2.2 + posY, img.width, img.height);
+  image(img, 0 + posX, height / 2.2 + posY, img.width / 2, img.height / 2);
+  
+  // Escala personaje
+  // scale(0.5);
+  // rect(30, 20, 50, 50);
+  // scale(1.5);
+  
+  
+  console.log(img);
+  // rect(10 + posX, 200 + posY, 155, 155);
   record();
 
   pauseMovie();
