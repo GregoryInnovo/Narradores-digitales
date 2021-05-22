@@ -162,3 +162,42 @@ button {
   margin: 0px 20px;
   color: #000;
 }
+
+.o-grid-container {
+  display: grid;
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr;
+  grid-template-areas: 
+   "conta1 conta2 conta3"
+   "conta4 conta5 conta6"
+   "conta7 conta8 conta9";
+   grid-gap: 0.3rem;
+  margin-top: 1.5rem;
+
+}
+
+.conta1, .conta5, .conta7 {
+  background-color: blue;
+}
+
+.conta2, .conta6, .conta8 {
+  background-color: purple;
+
+}
+
+.conta3, .conta4,  .conta9 {
+  background-color: yellow;
+}
+
+.conta1, .conta2, .conta3, .conta4, .conta5, .conta6, .conta7, .conta8, .conta9 {
+  height: 20vh;
+  width: 100%;
+}
+
+.o-title {
+  text-align: center;
+  margin-top: 1.5rem;
+}

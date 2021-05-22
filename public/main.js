@@ -1,13 +1,5 @@
 var info;
 var socket = io();
-// let btn_play = Document.getElementBy("play");
-
-// console.log(btn_play);
-
-// function changeColor(newColor) {
-//   var elem = document.getElementById('para');
-//   elem.style.color = newColor;
-// }
 
 socket.on("arduino:data", function (data) {
   // console.log(data);
