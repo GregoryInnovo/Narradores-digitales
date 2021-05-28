@@ -106,7 +106,14 @@ preload = () => {
 };
 let img;
 
-let backgroundScene;
+let backgroundSceneSelect;
+let backgroundScene1;
+let backgroundScene2;
+
+let scene1 = false;
+let scene2 = false;
+let scene3 = false;
+
 setup = () => {
   let renderer = createCanvas(cwidth / scaleX_size, cheight / scaleY_size);
 
@@ -116,7 +123,8 @@ setup = () => {
   frameRate(frate);
 
   img = loadImage("./per.png");
-  backgroundScene = loadImage("./assets/Escenarios/Parque.jpg");
+  backgroundScene1 = loadImage("./assets/Escenarios/Parque.jpg");
+  backgroundScene2 = loadImage("./assets/Escenarios/Diversiones.jpg");
 
   // mic = new p5.AudioIn()
   // mic.start();
@@ -135,6 +143,16 @@ setup = () => {
   // Btn para detener
   let btn_stop = select("#stop");
   btn_stop.mousePressed(() => (stopRecord = true));
+
+  // Btn para scene1
+  let btn_scene1 = select("#scene1");
+  btn_scene1.mousePressed(() => (scene1 = true, scene2 = false));
+  // Btn para scene2
+  let btn_scene2 = select("#scene2");
+  btn_scene2.mousePressed(() => (scene1 = false, scene2 = true));
+
+  // Controller scenes
+  backgroundSceneSelect = backgroundScene1;
 };
 
 draw = () => {
@@ -146,7 +164,7 @@ draw = () => {
   count++;
 
   // Imagen de fondo para la historia
-  image(backgroundScene, 0, 0, cwidth / scaleX_size, cheight / scaleY_size);
+  image(backgroundSceneSelect, 0, 0, cwidth / scaleX_size, cheight / scaleY_size);
 
   // image(img, 0 + posX, 0 + posY);
   // Personaje que se dibuja en la interfaz
@@ -168,6 +186,7 @@ draw = () => {
 
   stopMovie();
 
+  scenesController();
   // Imprime cuando llego a n de frames
 
   // Detiene la grabación
@@ -197,6 +216,19 @@ windowResized = () => {
     console.log("new size 3");
   }
 };
+
+
+function scenesController() {
+  if (scene1) {
+    backgroundSceneSelect =  backgroundScene1
+    scene2 = false;
+    console.log("scene1")
+  } else if (scene2) {
+    backgroundSceneSelect = backgroundScene2
+    scene1 = false;
+    console.log("scene2")
+  }
+}
 
 function record() {
   // Añade un nuevo frame
