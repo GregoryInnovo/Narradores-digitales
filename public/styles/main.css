@@ -20,8 +20,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 * {
@@ -156,7 +155,7 @@ button {
 }
 
 .o-controller {
-  background:linear-gradient(50deg, #a0d1ff, #25aff7);
+  /* background:linear-gradient(50deg, #a0d1ff, #25aff7); */
   margin: auto;
   margin-top: 1.5rem;
   text-align: center;
@@ -188,6 +187,7 @@ button {
   background-image: url('../assets/Escenarios/Parque.jpg');
   background-size: cover;
   font-weight: bold;
+  /* border: 10px solid red; */
 }
 
 .conta2 {
@@ -202,17 +202,53 @@ button {
   font-weight: bold;
 }
 
-.conta5, .conta7 {
-  background-color: blue;
+.conta4 {
+  background-image: url('../assets/Personajes/Human/HMM.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  font-weight: bold;
 }
 
-.conta6, .conta8 {
-  background-color: purple;
+.conta5 {
+  background-image: url('../assets/Personajes/Human/HFF.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  font-weight: bold;
+}
+
+.conta6 {
+  background-image: url('../assets/Personajes/Human/HFM.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  font-weight: bold;
+}
+
+.conta7 {
+   background-image: url('../assets/Personajes/Human/hm.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  font-weight: bold;
+}
+
+.conta8 {
+   background-image: url('../assets/Personajes/Animal/AP.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 133%;
+  font-weight: bold;
 
 }
 
-.conta4,  .conta9 {
-  background-color: yellow;
+.conta9 {
+   background-image: url('../assets/Personajes/Animal/AR.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  font-weight: bold;
 }
 
 .conta1, .conta2, .conta3, .conta4, .conta5, .conta6, .conta7, .conta8, .conta9 {
