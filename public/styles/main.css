@@ -184,16 +184,34 @@ button {
 
 }
 
-.conta1, .conta5, .conta7 {
+.conta1 {
+  background-image: url('../assets/Escenarios/Parque.jpg');
+  background-size: cover;
+  font-weight: bold;
+}
+
+.conta2 {
+  background-image: url('../assets/Escenarios/Casa.jpg');
+  background-size: cover;
+  font-weight: bold;
+}
+
+.conta3 {
+  background-image: url('../assets/Escenarios/Carro.jpg');
+  background-size: cover;
+  font-weight: bold;
+}
+
+.conta5, .conta7 {
   background-color: blue;
 }
 
-.conta2, .conta6, .conta8 {
+.conta6, .conta8 {
   background-color: purple;
 
 }
 
-.conta3, .conta4,  .conta9 {
+.conta4,  .conta9 {
   background-color: yellow;
 }
 

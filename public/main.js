@@ -109,6 +109,7 @@ let img;
 let backgroundSceneSelect;
 let backgroundScene1;
 let backgroundScene2;
+let backgroundScene3;
 
 let scene1 = false;
 let scene2 = false;
@@ -124,7 +125,8 @@ setup = () => {
 
   img = loadImage("./per.png");
   backgroundScene1 = loadImage("./assets/Escenarios/Parque.jpg");
-  backgroundScene2 = loadImage("./assets/Escenarios/Diversiones.jpg");
+  backgroundScene2 = loadImage("./assets/Escenarios/Casa.jpg");
+  backgroundScene3 = loadImage("./assets/Escenarios/Carro.jpg");
 
   // mic = new p5.AudioIn()
   // mic.start();
@@ -146,10 +148,13 @@ setup = () => {
 
   // Btn para scene1
   let btn_scene1 = select("#scene1");
-  btn_scene1.mousePressed(() => (scene1 = true, scene2 = false));
+  btn_scene1.mousePressed(() => (scene1 = true, scene2 = false, scene3 = false));
   // Btn para scene2
   let btn_scene2 = select("#scene2");
-  btn_scene2.mousePressed(() => (scene1 = false, scene2 = true));
+  btn_scene2.mousePressed(() => (scene2 = true, scene1 = false,  scene3 = false));
+  // Btn para scene3
+  let btn_scene3 = select("#scene3");
+  btn_scene3.mousePressed(() => (scene3 = true, scene2 = false, scene1 = false ));
 
   // Controller scenes
   backgroundSceneSelect = backgroundScene1;
@@ -222,11 +227,18 @@ function scenesController() {
   if (scene1) {
     backgroundSceneSelect =  backgroundScene1
     scene2 = false;
+    scene3 = false;
     console.log("scene1")
   } else if (scene2) {
     backgroundSceneSelect = backgroundScene2
     scene1 = false;
+    scene3 = false;
     console.log("scene2")
+  } else if (scene3) {
+    backgroundSceneSelect = backgroundScene3
+    scene1 = false;
+    scene2 = false;
+    console.log("scene3")
   }
 }
 
