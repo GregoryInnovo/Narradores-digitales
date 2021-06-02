@@ -3,7 +3,7 @@
 
 :root {
   --primary-color: gray;
-  --secondary-color: rgb(63, 63, 63);
+  --secondary-color: rgb(192, 4, 4);
   --extra-color: white;
 
   --blue1:#20ced3;
@@ -64,7 +64,7 @@ button {
 /* ------------------------------------- */
 /* nav */
 .navcont {
-  background:#202020;
+  background:#ffffff;
 }
 .navbar{
   padding: 1rem 3rem;
@@ -101,7 +101,7 @@ button {
 }
 /* footer */
 .cont-footer{
-  background:#202020;
+  background:#ffffff;
   color: #fff;
 }
 .border-bottom {
@@ -302,4 +302,14 @@ button {
 /* Footer */
 #foot{
   margin-top: 20px;
+}
+
+.o-img-main {
+  width: 100%;
+  height: auto;
+}
+
+.o-img {
+  width:100%;
+  height: auto;
 }
