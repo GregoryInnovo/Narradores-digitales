@@ -124,6 +124,8 @@ let scene1 = false;
 let scene2 = false;
 let scene3 = false;
 
+let characterSelect = "A";
+
 setup = () => {
   let renderer = createCanvas(cwidth / scaleX_size, cheight / scaleY_size);
 
@@ -139,7 +141,6 @@ setup = () => {
   character4 = loadImage("./assets/Personajes/Human/HM.png");
   character5 = loadImage("./assets/Personajes/Animal/AP.png");
   character6 = loadImage("./assets/Personajes/Animal/AR.png");
-
 
   backgroundScene1 = loadImage("./assets/Escenarios/Parque.jpg");
   backgroundScene2 = loadImage("./assets/Escenarios/Casa.jpg");
@@ -165,37 +166,80 @@ setup = () => {
 
   // Btn para scene1
   let btn_scene1 = select("#scene1");
-  btn_scene1.mousePressed(() => (scene1 = true, scene2 = false, scene3 = false));
+  btn_scene1.mousePressed(
+    () => ((scene1 = true), (scene2 = false), (scene3 = false))
+  );
+
   // Btn para scene2
   let btn_scene2 = select("#scene2");
-  btn_scene2.mousePressed(() => (scene2 = true, scene1 = false,  scene3 = false));
+  btn_scene2.mousePressed(
+    () => ((scene2 = true), (scene1 = false), (scene3 = false))
+  );
+
   // Btn para scene3
   let btn_scene3 = select("#scene3");
-  btn_scene3.mousePressed(() => (scene3 = true, scene2 = false, scene1 = false ));
+  btn_scene3.mousePressed(
+    () => ((scene3 = true), (scene2 = false), (scene1 = false))
+  );
 
   // Controller scenes
   backgroundSceneSelect = backgroundScene1;
 
-  characterSelector = character5;
+  // Character controller
+  characterSelector = character1;
+
+  // Btn character1
+  let btn_charac1 = select("#charac1");
+  btn_charac1.mousePressed(() => (characterSelect = "A"));
+  // Btn character2
+  let btn_charac2 = select("#charac2");
+  btn_charac2.mousePressed(() => (characterSelect = "B"));
+  // Btn character3
+  let btn_charac3 = select("#charac3");
+  btn_charac3.mousePressed(() => (characterSelect = "C"));
+  // Btn character4
+  let btn_charac4 = select("#charac4");
+  btn_charac4.mousePressed(() => (characterSelect = "D"));
+  // Btn character5
+  let btn_charac5 = select("#charac5");
+  btn_charac5.mousePressed(() => (characterSelect = "E"));
+  // Btn character6
+  let btn_charac6 = select("#charac6");
+  btn_charac6.mousePressed(() => (characterSelect = "F"));
 };
 
 draw = () => {
-  background(220);
-  textSize(128);
-  textAlign(CENTER, CENTER);
-  text(count, width / 2, height / 2);
-  // Suma la cantidad de frames
-  count++;
+  // background(220);
 
   // Imagen de fondo para la historia
-  image(backgroundSceneSelect, 0, 0, cwidth / scaleX_size, cheight / scaleY_size);
+  image(
+    backgroundSceneSelect,
+    0,
+    0,
+    cwidth / scaleX_size,
+    cheight / scaleY_size
+  );
 
   // image(character1, 0 + posX, 0 + posY);
   // Personaje que se dibuja en la interfaz
   // image(character1, 0 + posX, height / 2.2 + posY, character1.width, character1.height);
 
   // Personaje 1 de la historia
-  image(characterSelector, 0 + posX, height / 2.2 + posY, characterSelector.width / 2, characterSelector.height / 2);
+  image(
+    characterSelector,
+    0 + posX,
+    height / 1.8 + posY,
+    characterSelector.width / 2,
+    characterSelector.height / 2
+  );
+
+  image(
+    characterSelector,
+    100 + posX,
+    height / 1.8 + posY,
+    characterSelector.width / 2,
+    characterSelector.height / 2
+  );
 
   // Escala personaje
   // scale(0.5);
@@ -211,6 +255,7 @@ draw = () => {
   stopMovie();
 
   scenesController();
+  characterController();
   // Imprime cuando llego a n de frames
 
   // Detiene la grabación
@@ -218,6 +263,10 @@ draw = () => {
   //   console.log("Time!");
   //   stopRecord = true;
   // }
+
+  textSize(12);
+  textAlign(CENTER, CENTER);
+  text(count, width - 50, height / 10);
 };
 
 windowResized = () => {
@@ -241,23 +290,48 @@ windowResized = () => {
   }
 };
 
-
 function scenesController() {
   if (scene1) {
-    backgroundSceneSelect =  backgroundScene1
+    backgroundSceneSelect = backgroundScene1;
     scene2 = false;
     scene3 = false;
-    console.log("scene1")
+    console.log("scene1");
   } else if (scene2) {
-    backgroundSceneSelect = backgroundScene2
+    backgroundSceneSelect = backgroundScene2;
     scene1 = false;
     scene3 = false;
-    console.log("scene2")
+    console.log("scene2");
   } else if (scene3) {
-    backgroundSceneSelect = backgroundScene3
+    backgroundSceneSelect = backgroundScene3;
     scene1 = false;
     scene2 = false;
-    console.log("scene3")
+    console.log("scene3");
+  }
+}
+
+function characterController() {
+  switch (characterSelect) {
+    case "A":
+      characterSelector = character1;
+      break;
+    case "B":
+      characterSelector = character2;
+      break;
+    case "C":
+      characterSelector = character3;
+      break;
+    case "D":
+      characterSelector = character4;
+      break;
+    case "E":
+      characterSelector = character5;
+      break;
+    case "F":
+      characterSelector = character6;
+      break;
+    default:
+      characterSelector = character1;
+      break;
   }
 }
 
@@ -274,6 +348,7 @@ function record() {
     //     recorder.record(soundFile);
     //     console.log('audio')
     // }
+    count++;
   }
 }
 

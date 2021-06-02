@@ -238,7 +238,7 @@ button {
    background-image: url('../assets/Personajes/Animal/AP.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-size: 133%;
+  background-size: 30%;
   font-weight: bold;
 
 }
@@ -247,7 +247,7 @@ button {
    background-image: url('../assets/Personajes/Animal/AR.png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-size: 40%;
+  background-size: 30%;
   font-weight: bold;
 }
 
