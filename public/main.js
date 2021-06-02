@@ -104,7 +104,16 @@ preload = () => {
     encoder.initialize();
   });
 };
-let img;
+
+// Characters
+let character1;
+let character2;
+let character3;
+let character4;
+let character5;
+let character6;
+
+let characterSelector;
 
 let backgroundSceneSelect;
 let backgroundScene1;
@@ -123,7 +132,15 @@ setup = () => {
   renderer.id("canvas-container");
   frameRate(frate);
 
-  img = loadImage("./per.png");
+  // Load character character1
+  character1 = loadImage("./assets/Personajes/Human/HMM.png");
+  character2 = loadImage("./assets/Personajes/Human/HFF.png");
+  character3 = loadImage("./assets/Personajes/Human/HFM.png");
+  character4 = loadImage("./assets/Personajes/Human/HM.png");
+  character5 = loadImage("./assets/Personajes/Animal/AP.png");
+  character6 = loadImage("./assets/Personajes/Animal/AR.png");
+
+
   backgroundScene1 = loadImage("./assets/Escenarios/Parque.jpg");
   backgroundScene2 = loadImage("./assets/Escenarios/Casa.jpg");
   backgroundScene3 = loadImage("./assets/Escenarios/Carro.jpg");
@@ -158,6 +175,8 @@ setup = () => {
 
   // Controller scenes
   backgroundSceneSelect = backgroundScene1;
+
+  characterSelector = character5;
 };
 
 draw = () => {
@@ -171,19 +190,19 @@ draw = () => {
   // Imagen de fondo para la historia
   image(backgroundSceneSelect, 0, 0, cwidth / scaleX_size, cheight / scaleY_size);
 
-  // image(img, 0 + posX, 0 + posY);
+  // image(character1, 0 + posX, 0 + posY);
   // Personaje que se dibuja en la interfaz
-  // image(img, 0 + posX, height / 2.2 + posY, img.width, img.height);
+  // image(character1, 0 + posX, height / 2.2 + posY, character1.width, character1.height);
 
   // Personaje 1 de la historia
-  image(img, 0 + posX, height / 2.2 + posY, img.width / 2, img.height / 2);
+  image(characterSelector, 0 + posX, height / 2.2 + posY, characterSelector.width / 2, characterSelector.height / 2);
 
   // Escala personaje
   // scale(0.5);
   // rect(30, 20, 50, 50);
   // scale(1.5);
 
-  // console.log(img);
+  // console.log(character1);
   // rect(10 + posX, 200 + posY, 155, 155);
   record();
 
