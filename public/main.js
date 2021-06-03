@@ -4,27 +4,43 @@ var socket = io();
 socket.on("arduino:data", function (data) {
   // console.log(data);
   info = parseInt(data.value);
+  // info = (data.value)+"";
   // console.log(info);
-  // var a = info === 1;
+  // var a = info === "1";
   // console.log(a);
-  switch (info) {
-    case 1:
+  switch (info.toString()) {
+    case "1":
       right();
       break;
-    case 2:
-      left();
-      break;
-    case 3:
+    case "2":
       jump();
       break;
-    case 4:
+    case "3":
+      left();
+      break;
+    case "4":
       recordArduino();
       break;
-    case 5:
+    case "5":
       pauseArduino();
       break;
-    case 6:
+    case "6":
       stopArduino();
+      break;
+    case "7":
+      characterSelected();
+      break;
+    case "8":
+      sceneSelected();
+      break;
+    case "9":
+      alert("9");
+      break;
+    case "0":
+      alert("0");
+      break;
+    case "*":
+      alert("B");
       break;
 
     default:
@@ -83,6 +99,32 @@ function pauseArduino() {
 function stopArduino() {
   stopRecord = true;
 }
+let posCharacter = 0;
+
+// Función que cambia el personaje
+function characterSelected() {
+  const characterArray = ["A", "B", "C", "D", "E", "F"];
+  posCharacter++;
+  if (posCharacter >= 0 && posCharacter < 6) {
+    characterSelect = characterArray[posCharacter];
+  } else {
+    posCharacter = 0;
+    characterSelect = characterArray[posCharacter];
+  }
+}
+let posScene = 0;
+
+// Función que cambia el personaje
+function sceneSelected() {
+  const sceneArray = ["A", "B", "C"];
+  posCharacter++;
+  if (posCharacter >= 0 && posCharacter < 3) {
+    sceneSelect = sceneArray[posCharacter];
+  } else {
+    posCharacter = 0;
+    sceneSelect = sceneArray[posCharacter];
+  }
+}
 
 let mic, recorder, soundFile;
 let state = 0;
@@ -115,16 +157,17 @@ let character6;
 
 let characterSelector;
 
-let backgroundSceneSelect;
+let backgroundSceneSelector;
 let backgroundScene1;
 let backgroundScene2;
 let backgroundScene3;
 
-let scene1 = false;
-let scene2 = false;
-let scene3 = false;
+let scene1;
+let scene2;
+let scene3;
 
 let characterSelect = "A";
+let sceneSelect = "A";
 
 setup = () => {
   let renderer = createCanvas(cwidth / scaleX_size, cheight / scaleY_size);
@@ -166,24 +209,18 @@ setup = () => {
 
   // Btn para scene1
   let btn_scene1 = select("#scene1");
-  btn_scene1.mousePressed(
-    () => ((scene1 = true), (scene2 = false), (scene3 = false))
-  );
+  btn_scene1.mousePressed(() => (sceneSelect = "A"));
 
   // Btn para scene2
   let btn_scene2 = select("#scene2");
-  btn_scene2.mousePressed(
-    () => ((scene2 = true), (scene1 = false), (scene3 = false))
-  );
+  btn_scene2.mousePressed(() => (sceneSelect = "B"));
 
   // Btn para scene3
   let btn_scene3 = select("#scene3");
-  btn_scene3.mousePressed(
-    () => ((scene3 = true), (scene2 = false), (scene1 = false))
-  );
+  btn_scene3.mousePressed(() => (sceneSelect = "C"));
 
   // Controller scenes
-  backgroundSceneSelect = backgroundScene1;
+  backgroundSceneSelector = backgroundScene1;
 
   // Character controller
   characterSelector = character1;
@@ -213,7 +250,7 @@ draw = () => {
 
   // Imagen de fondo para la historia
   image(
-    backgroundSceneSelect,
+    backgroundSceneSelector,
     0,
     0,
     cwidth / scaleX_size,
@@ -291,21 +328,22 @@ windowResized = () => {
 };
 
 function scenesController() {
-  if (scene1) {
-    backgroundSceneSelect = backgroundScene1;
-    scene2 = false;
-    scene3 = false;
-    console.log("scene1");
-  } else if (scene2) {
-    backgroundSceneSelect = backgroundScene2;
-    scene1 = false;
-    scene3 = false;
-    console.log("scene2");
-  } else if (scene3) {
-    backgroundSceneSelect = backgroundScene3;
-    scene1 = false;
-    scene2 = false;
-    console.log("scene3");
+  switch (sceneSelect) {
+    case "A":
+      backgroundSceneSelector = backgroundScene1;
+      console.log("scene1");
+      break;
+    case "B":
+      backgroundSceneSelector = backgroundScene2;
+      console.log("scene2");
+      break;
+    case "C":
+      backgroundSceneSelector = backgroundScene3;
+      console.log("scene3");
+      break;
+    default:
+      backgroundSceneSelector = backgroundScene1;
+      break;
   }
 }
 
