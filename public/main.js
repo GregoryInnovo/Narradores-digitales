@@ -396,10 +396,12 @@ function characterController() {
 }
 
 function toggleCharacterTwo() {
+  if(!noMoreConfig)
   toggleBtnCharacter = !toggleBtnCharacter;
 
 }
 function record() {
+  noMoreConfig = true;
   // Añade un nuevo frame
   if (recording) {
     encoder.addFrameRgba(

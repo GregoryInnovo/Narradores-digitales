@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
-/* https://fonts.google.com/specimen/Open+Sans?query=sans */
 
 :root {
   --primary-color: gray;
   --secondary-color: rgb(192, 4, 4);
   --extra-color: white;
-
+  --font:  SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace
   --blue1:#20ced3;
   --blue2:#a5eaef;
 }
@@ -107,7 +106,7 @@ button {
 }
 /* footer */
 .cont-rule{
-  background: linear-gradient(50deg, #7a7a7a, #919191);
+  background: linear-gradient(50deg, #fdfdfd, #c2bfbf);
   color: #fff;
 }
 .border-bottom {
@@ -132,8 +131,9 @@ button {
   margin-bottom: 40px;
   margin-top: -20px;
   margin-left: 100px;
-  color: rgb(199, 199, 199);
-  font-weight: 400;
+  color: rgb(0, 0, 0);
+  font-weight: 300;
+  font-family: var(--font);
 }
 .footer--btn{
   background: #000;
@@ -367,5 +367,5 @@ button {
 
 .o-font-audio {
   font-size: 1rem;
-  font-family: var(--bs-font-sans-serif);
+  font-family: var(--font);
 }
