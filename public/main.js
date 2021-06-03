@@ -160,6 +160,7 @@ let character5;
 let character6;
 
 let characterSelector;
+let characterSelector2;
 
 let backgroundSceneSelector;
 let backgroundScene1;
@@ -197,7 +198,7 @@ setup = () => {
 
   // Btn para grabar
   let btn_record = select("#record");
-  btn_record.mousePressed(() => (recording = true, comenzarAGrabar()));
+  btn_record.mousePressed(() => ((recording = true), comenzarAGrabar()));
 
   // Btn para pausar
   let btn_pause = select("#pause");
@@ -224,6 +225,7 @@ setup = () => {
 
   // Character controller
   characterSelector = character1;
+  characterSelector2 = character2;
 
   // Btn character1
   let btn_charac1 = select("#charac1");
@@ -272,15 +274,14 @@ draw = () => {
     characterSelector.height / 2
   );
 
-  if(toggleBtnCharacter) {
+  if (toggleBtnCharacter) {
     image(
-      characterSelector,
+      characterSelector2,
       100 + posX,
       height / 1.8 + posY,
-      characterSelector.width / 2,
-      characterSelector.height / 2
+      characterSelector2.width / 2,
+      characterSelector2.height / 2
     );
-
   }
 
   // Escala personaje
@@ -290,6 +291,7 @@ draw = () => {
 
   // console.log(character1);
   // rect(10 + posX, 200 + posY, 155, 155);
+
   record();
 
   pauseMovie();
@@ -349,24 +351,31 @@ function characterController() {
   switch (characterSelect) {
     case "A":
       characterSelector = character1;
+      characterSelector2 = character2;
       break;
     case "B":
       characterSelector = character2;
+      characterSelector2 = character3;
       break;
     case "C":
       characterSelector = character3;
+      characterSelector2 = character4;
       break;
     case "D":
       characterSelector = character4;
+      characterSelector2 = character5;
       break;
     case "E":
       characterSelector = character5;
+      characterSelector2 = character6;
       break;
     case "F":
       characterSelector = character6;
+      characterSelector2 = character1;
       break;
     default:
       characterSelector = character1;
+      characterSelector2 = character2;
       break;
   }
 }
@@ -375,7 +384,6 @@ function toggleCharacterTwo() {
   toggleBtnCharacter = !toggleBtnCharacter;
 }
 function record() {
-
   // Añade un nuevo frame
   if (recording) {
     encoder.addFrameRgba(
@@ -400,7 +408,6 @@ function pauseMovie() {
 function stopMovie() {
   // finaliza el encoder y exporta el mp4
   if (stopRecord) {
-
     stopRecord = false;
     recording = false;
     recordedFrames = 0;
@@ -442,7 +449,6 @@ start.addEventListener("click", function () {
 function recordEvent() {
   if (startTimer === undefined) {
     startTimer = setInterval(timer, 1000);
-      
   } else {
     alert("El tiempo esta corriendo");
   }
@@ -601,7 +607,9 @@ const detenerConteo = () => {
 };
 
 const detenerGrabacion = () => {
-  if (!mediaRecorder) {return console.log("No se está grabando");}
+  if (!mediaRecorder) {
+    return console.log("No se está grabando");
+  }
   mediaRecorder.stop();
   mediaRecorder = null;
 };
