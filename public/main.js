@@ -20,9 +20,11 @@ socket.on("arduino:data", function (data) {
       break;
     case "4":
       recordArduino();
+      recordEvent();
       break;
     case "5":
       pauseArduino();
+      pauseEvent();
       break;
     case "6":
       stopArduino();
@@ -444,6 +446,19 @@ start.addEventListener("click", function () {
   }
 });
 
+function recordEvent() {
+  if (startTimer === undefined) {
+    startTimer = setInterval(timer, 1000);
+  } else {
+    alert("El tiempo esta corriendo");
+  }
+}
+
+function pauseEvent() {
+  stopInterval();
+  startTimer = undefined;
+}
+
 stop.addEventListener("click", function () {
   stopInterval();
   startTimer = undefined;
@@ -458,7 +473,6 @@ function timer() {
   }
 
   if (workMin.innerText == 0 && workSec.innerText == 0) {
-
     if (sum == false) {
       stopRecord = true;
       sum = true;
