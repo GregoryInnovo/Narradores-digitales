@@ -32,19 +32,22 @@ socket.on("arduino:data", function (data) {
       detenerGrabacion();
       break;
     case "7":
+      if(!noMoreConfig)
       characterSelected();
       break;
     case "8":
+      if(!noMoreConfig)
       sceneSelected();
       break;
     case "9":
+      if(!noMoreConfig)
       toggleCharacterTwo();
       break;
     case "0":
-      alert("0");
+      changePosY()
       break;
     case "*":
-      alert("B");
+      // alert("B");
       break;
 
     default:
@@ -92,6 +95,7 @@ function jump() {
 // Función la cual empieza a grabar cuando se envie el valor 4
 function recordArduino() {
   recording = true;
+  noMoreConfig = true;
 }
 
 // Función pausa la historia
@@ -175,8 +179,11 @@ let characterSelect = "A";
 let sceneSelect = "A";
 
 let toggleBtnCharacter;
+let togglePosY;
 
+let noMoreConfig;
 setup = () => {
+  noMoreConfig = false;
   let renderer = createCanvas(cwidth / scaleX_size, cheight / scaleY_size);
 
   // Lo emparenta con el div
@@ -247,11 +254,11 @@ setup = () => {
   btn_charac6.mousePressed(() => (characterSelect = "F"));
 
   toggleBtnCharacter = false;
+  togglePosY = false;
+
 };
 
 draw = () => {
-  // background(220);
-
   // Imagen de fondo para la historia
   image(
     backgroundSceneSelector,
@@ -261,20 +268,17 @@ draw = () => {
     cheight / scaleY_size
   );
 
-  // image(character1, 0 + posX, 0 + posY);
-  // Personaje que se dibuja en la interfaz
-  // image(character1, 0 + posX, height / 2.2 + posY, character1.width, character1.height);
-
-  // Personaje 1 de la historia
   image(
     characterSelector,
     0 + posX,
     height / 1.8 + posY,
     characterSelector.width / 2,
     characterSelector.height / 2
-  );
+    );
 
-  if (toggleBtnCharacter) {
+    
+    // Personaje 2 de la historia
+    if (toggleBtnCharacter) {
     image(
       characterSelector2,
       100 + posX,
@@ -298,12 +302,14 @@ draw = () => {
 
   stopMovie();
 
-  scenesController();
-  characterController();
-
-  textSize(12);
-  textAlign(CENTER, CENTER);
-  text(count, width - 50, height / 10);
+  
+  if(!noMoreConfig) {
+    scenesController();
+    characterController();
+  }
+  // textSize(12);
+  // textAlign(CENTER, CENTER);
+  // text(count, width - 50, height / 10);
 };
 
 windowResized = () => {
@@ -347,6 +353,15 @@ function scenesController() {
   }
 }
 
+function changePosY() {
+  togglePosY = !togglePosY;
+  if(togglePosY) {
+    posY = 50;
+  } else {
+    posY = 0;
+  }
+}
+
 function characterController() {
   switch (characterSelect) {
     case "A":
@@ -382,6 +397,7 @@ function characterController() {
 
 function toggleCharacterTwo() {
   toggleBtnCharacter = !toggleBtnCharacter;
+
 }
 function record() {
   // Añade un nuevo frame
@@ -391,7 +407,6 @@ function record() {
     );
     recordedFrames++;
     console.log("recording and frames", recordedFrames);
-
     count++;
   }
 }
@@ -412,7 +427,6 @@ function stopMovie() {
     recording = false;
     recordedFrames = 0;
     console.log("recording stop");
-
     encoder.finalize();
     const uint8Array = encoder.FS.readFile(encoder.outputFilename);
     const anchor = document.createElement("a");
@@ -422,7 +436,6 @@ function stopMovie() {
     anchor.download = encoder.outputFilename;
     anchor.click();
     encoder.delete();
-
     preload(); // reinitialize encoder
   }
 }

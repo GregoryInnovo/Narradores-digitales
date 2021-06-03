@@ -37,7 +37,6 @@
   </head>
 
   <style>
-
     audio {
       display: flex;
       width: 100%;
@@ -68,7 +67,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item nav-rule">
-              <a class="nav-link" style="color: black" href="#">Editor</a>
+              <a class="nav-link" style="color: black" href="VideoRecorder.html">Editor</a>
             </li>
           </ul>
         </div>
@@ -96,45 +95,50 @@
     </div>
 
     <div class="container-timer">
-      
       <p id="work" class="label">Tiempo restante:</p>
       <!--       <p id="break" class="label">Descanso:</p>
         <p id="cycles" class="label">Ciclos:</p> -->
-        <!--Timer del trabajo-->
-        <div id="work-timer">
-          <span id="w_minutes">0</span>
-          <span class="semicolon">:</span>
-          <span id="w_seconds">15</span>
-        </div>
-        <br />
-        <div class="o-font-audio">
-          <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
-          <p id="duracion"></p>
-          <button id="btnComenzarGrabacion" style="display: none">
-            Comenzar
-          </button>
-          <button id="btnDetenerGrabacion" style="display: none">Detener</button>
-        </div>
+      <!--Timer del trabajo-->
+      <div id="work-timer">
+        <span id="w_minutes">0</span>
+        <span class="semicolon">:</span>
+        <span id="w_seconds">15</span>
+      </div>
+      <br />
+      <div class="o-font-audio">
+        <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
+        <p id="duracion"></p>
+        <button id="btnComenzarGrabacion" style="display: none">
+          Comenzar
+        </button>
+        <button id="btnDetenerGrabacion" style="display: none">Detener</button>
+      </div>
     </div>
 
-    <div class="hist-config" id="hist-config">
+    <div class="hist-config" id="hist-config" >
       <h2 class="text-title">Configuración de la historia</h2>
-    
 
-    <div class="o-grid-container">
-      <button class="conta1 btn-style" id="scene1">Parque</button>
-      <button class="conta2 btn-style" id="scene2">Casa</button>
-      <button class="conta3 btn-style" id="scene3">Carro</button>
+      <div class="o-grid-container">
+        <button class="conta1 btn-style" id="scene1">Parque</button>
+        <button class="conta2 btn-style" id="scene2">Casa</button>
+        <button class="conta3 btn-style" id="scene3">Carro</button>
 
-      <button class="conta4 btn-style" id="charac1">Personaje 1</button>
-      <button class="conta5 btn-style" id="charac2">Personaje 2</button>
-      <button class="conta6 btn-style" id="charac3">Personaje 3</button>
-      <button class="conta7 btn-style" id="charac4">Personaje 4</button>
-      <button class="conta8 btn-style" id="charac5">Personaje 5</button>
-      <button class="conta9 btn-style" id="charac6">Personaje 6</button>
+        <button class="conta4 btn-style" id="charac1">Personaje 1</button>
+        <button class="conta5 btn-style" id="charac2">Personaje 2</button>
+        <button class="conta6 btn-style" id="charac3">Personaje 3</button>
+        <button class="conta7 btn-style" id="charac4">Personaje 4</button>
+        <button class="conta8 btn-style" id="charac5">Personaje 5</button>
+        <button class="conta9 btn-style" id="charac6">Personaje 6</button>
 
-      <button id="character2" onclick="toggleCharacterTwo()">¿Segundo personaje?</button>
-    </div>
+        <button
+          id="character2"
+          onclick="toggleCharacterTwo()"
+          type="button"
+          class="btn btn-success"
+        >
+          ¿Segundo personaje?
+        </button>
+      </div>
     </div>
 
     <section id="foot">
