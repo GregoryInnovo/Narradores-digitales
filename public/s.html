@@ -1,41 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-
-    <title>Narradores Digitales</title>
-    <!--  -->
-    <script src="https://unpkg.com/h264-mp4-encoder/embuild/dist/h264-mp4-encoder.web.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5.recorder@0.0.7/dist/p5.recorder.js"></script>
-    <script
-      src="https://cdn.socket.io/3.1.3/socket.io.min.js"
-      integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="/socket.io/socket.io.js" />
-    <!-- styles -->
-    <link rel="stylesheet" href="./styles/main.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <!--  -->
-    <link rel="icon" href="./icon.ico" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
-      crossorigin="anonymous"
-    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
   </head>
-
   <style>
     #cover {
       -webkit-box-flex: 1;
@@ -447,57 +417,6 @@
     }
   </style>
   <body>
-    <script src="/socket.io/socket.io.js"></script>
-
-    <!--  -->
-    <nav class="navbar navbar-expand-lg navbar-light navcont">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Narradores digitales</a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item nav-rule">
-              <a class="nav-link" style="color: black" href="#">Editor</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!--  -->
-    <script src="/socket.io/socket.io.js"></script>
-
-    <section>
-      <div id="recorder-container">
-        <script async src="./main.js"></script>
-      </div>
-    </section>
-
-    <div class="o-controller">
-      <button id="pause" class="button-infoc buttona">
-        Pausar<i class="bx bx-library icon"></i>
-      </button>
-      <button id="record" class="button-infoc buttonb">
-        Grabar<i class="bx bxs-video-plus icon"></i>
-      </button>
-      <button id="stop" class="button-infoc buttonc">
-        Detener<i class="bx bx-stop icon"></i>
-      </button>
-    </div>
-    <h2 class="o-title" style="text-align: center;">Configuración de la historia</h2>
-
-
     <div id="container-pomodoro">
       <p id="work" class="label">Trabajo:</p>
       <p id="break" class="label">Descanso:</p>
@@ -543,59 +462,113 @@
         Reinicio
       </button>
     </div>
-
-    
-    <div class="o-grid-container">
-      <button class="conta1" id="scene1">Parque</button>
-      <button class="conta2" id="scene2">Casa</button>
-      <button class="conta3" id="scene3">Carro</button>
-
-      <button class="conta4" id="charac1">Personaje 1</button>
-      <button class="conta5" id="charac2">Personaje 2</button>
-      <button class="conta6" id="charac3">Personaje 3</button>
-      <button class="conta7" id="charac4">Personaje 4</button>
-      <button class="conta8" id="charac5">Personaje 5</button>
-      <button class="conta9" id="charac6">Personaje 6</button>
-    </div>
-    <!-- Footer -->
-    <!-- <div class="cont-footer">
-      <div class="container px-4 py-5" id="icon-grid">
-        <h2 class="pb-2 border-bottom"  style="TEXT-ALIGN: center;">Narraciones Digitales</h2>
-
-      </div>
-      <div class="footer-privacity">
-        <p>Espacio pensado en los niños, para que puedan explorar toda su imaginacion y creatividad, 
-          mediante historias
-        </p>
-      </div>
-    </div>
-
-    <div class="footer--btn">
-      <p>Copyright &copy;2021 codeOpacity. designed by <span>Grupo 3, Computacion Fisica</span></p>
-    </div> -->
-    <!-- link boostrap -->
-    <!--  -->
-    <section id="foot">
-      <div class="footer--btn">
-        <p>
-          Copyright &copy;2021. designed by
-          <span>Grupo 3, Computacion Física</span>
-        </p>
-      </div>
-    </section>
-    <!--  -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
-      crossorigin="anonymous"
-    ></script>
-    <!--  -->
-    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
-    <script src="./timer.js"></script>
   </body>
+  <script>
+    var start = document.getElementById("start-buttom");
+    var stop = document.getElementById("stop-buttom");
+    var reset = document.getElementById("reset-buttom");
+
+    var wm = document.getElementById("w_minutes");
+    var ws = document.getElementById("w_seconds");
+
+    var bm = document.getElementById("b_minutes");
+    var bs = document.getElementById("b_seconds");
+
+    var click_sound = new Audio("click.mp3");
+    var bell = new Audio("bell.mp3");
+    var bellWork = new Audio("bellWork.mp3");
+
+    var startTimer;
+    var sum = false;
+    var operacion = 4 - 1;
+
+    start.addEventListener("click", function () {
+      click_sound.play();
+      if (startTimer === undefined) {
+        startTimer = setInterval(timer, 1000);
+      } else {
+        alert("El tiempo esta corriendo");
+      }
+    });
+
+    reset.addEventListener("click", function () {
+      click_sound.play();
+      wm.innerText = 0;
+      ws.innerText = "06";
+
+      bm.innerText = 0;
+      bs.innerText = "06";
+
+      document.getElementById("counter").innerText = 0;
+      stopInterval();
+      startTimer = undefined;
+      operacion = 3;
+      sum = false;
+      timer();
+    });
+
+    stop.addEventListener("click", function () {
+      stopInterval();
+      startTimer = undefined;
+    });
+
+    function timer() {
+      if (ws.innerText != 0) {
+        ws.innerText--;
+      } else if (wm.innerText != 0 && ws.innerText == 0) {
+        ws.innerText = 59;
+        wm.innerText--;
+      }
+
+      if (wm.innerText == 0 && ws.innerText == 0) {
+        if (bs.innerText != 0) {
+          bs.innerText--;
+        } else if (bm.innerText != 0 && bs.innerText == 0) {
+          bs.innerText = 59;
+          bm.innerText--;
+        }
+
+        if (sum == false) {
+          /* alert("Descanso"); */
+          document.getElementById("counter").innerText++;
+          sum = true;
+          bell.play();
+        }
+      }
+
+      if (
+        wm.innerText == 0 &&
+        ws.innerText == 0 &&
+        bm.innerText == 0 &&
+        bs.innerText == 0
+      ) {
+        bellWork.play();
+        wm.innerText = 0;
+        ws.innerText = "05";
+
+        if (document.getElementById("counter").innerText == operacion) {
+          bm.innerText = 0;
+          bs.innerText = "10";
+          if (operacion == 3) {
+            operacion++;
+            operacion = operacion + 4 - 1;
+            /* alert(operacion); */
+          } else {
+            operacion = operacion + 4;
+          }
+        } else {
+          bm.innerText = 0;
+          bs.innerText = "06";
+        }
+        sum = false;
+
+        /* alert("Se acabo el Descanso");  */
+      }
+    }
+
+    function stopInterval() {
+      clearInterval(startTimer);
+      click_sound.play();
+    }
+  </script>
 </html>
