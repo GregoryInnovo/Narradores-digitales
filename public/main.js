@@ -38,7 +38,7 @@ socket.on("arduino:data", function (data) {
       sceneSelected();
       break;
     case "9":
-      alert("9");
+      toggleCharacterTwo();
       break;
     case "0":
       alert("0");
@@ -173,6 +173,8 @@ let scene3;
 let characterSelect = "A";
 let sceneSelect = "A";
 
+let toggleBtnCharacter;
+
 setup = () => {
   let renderer = createCanvas(cwidth / scaleX_size, cheight / scaleY_size);
 
@@ -192,12 +194,6 @@ setup = () => {
   backgroundScene1 = loadImage("./assets/Escenarios/Parque.jpg");
   backgroundScene2 = loadImage("./assets/Escenarios/Casa.jpg");
   backgroundScene3 = loadImage("./assets/Escenarios/Carro.jpg");
-
-  // mic = new p5.AudioIn()
-  // mic.start();
-  // recorder = new p5.SoundRecorder();
-  // recorder.setInput(mic);
-  // soundFile = new p5.SoundFile();
 
   // Btn para grabar
   let btn_record = select("#record");
@@ -247,6 +243,8 @@ setup = () => {
   // Btn character6
   let btn_charac6 = select("#charac6");
   btn_charac6.mousePressed(() => (characterSelect = "F"));
+
+  toggleBtnCharacter = false;
 };
 
 draw = () => {
@@ -274,13 +272,16 @@ draw = () => {
     characterSelector.height / 2
   );
 
-  image(
-    characterSelector,
-    100 + posX,
-    height / 1.8 + posY,
-    characterSelector.width / 2,
-    characterSelector.height / 2
-  );
+  if(toggleBtnCharacter) {
+    image(
+      characterSelector,
+      100 + posX,
+      height / 1.8 + posY,
+      characterSelector.width / 2,
+      characterSelector.height / 2
+    );
+
+  }
 
   // Escala personaje
   // scale(0.5);
@@ -297,13 +298,6 @@ draw = () => {
 
   scenesController();
   characterController();
-  // Imprime cuando llego a n de frames
-
-  // Detiene la grabación
-  // if (count == 125 ) {
-  //   console.log("Time!");
-  //   stopRecord = true;
-  // }
 
   textSize(12);
   textAlign(CENTER, CENTER);
@@ -377,6 +371,9 @@ function characterController() {
   }
 }
 
+function toggleCharacterTwo() {
+  toggleBtnCharacter = !toggleBtnCharacter;
+}
 function record() {
 
   // Añade un nuevo frame
@@ -386,11 +383,7 @@ function record() {
     );
     recordedFrames++;
     console.log("recording and frames", recordedFrames);
-    // if (mic.enabled) {
-    //     // indicar al grabador que grabe en el objeto p5.SoundFile, que usaremos para la reproducción
-    //     recorder.record(soundFile);
-    //     console.log('audio')
-    // }
+
     count++;
   }
 }
@@ -407,9 +400,6 @@ function pauseMovie() {
 function stopMovie() {
   // finaliza el encoder y exporta el mp4
   if (stopRecord) {
-    // recorder.stop();
-    // soundFile.play();
-    // saveSound(soundFile, 'mySound.wav');
 
     stopRecord = false;
     recording = false;
