@@ -56,7 +56,7 @@ let cheight = 460;
 let encoder;
 
 // frames para aproximar los valores de los segs
-const frate = 24; // frame rate
+const frate = 20; // frame rate
 const numFrames = 100; // num of frames to record
 let recording = false;
 let stopRecord = false;
