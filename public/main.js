@@ -376,6 +376,7 @@ function characterController() {
 }
 
 function record() {
+
   // Añade un nuevo frame
   if (recording) {
     encoder.addFrameRgba(
@@ -449,6 +450,7 @@ start.addEventListener("click", function () {
 function recordEvent() {
   if (startTimer === undefined) {
     startTimer = setInterval(timer, 1000);
+      
   } else {
     alert("El tiempo esta corriendo");
   }

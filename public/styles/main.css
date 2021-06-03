@@ -199,7 +199,12 @@ button {
   font-size: 40px;
 }
 
-.container-timer h2 {
+.hist-config {
+  text-align: center;
+}
+
+.text-title {
+  text-align: center;
   margin-top: 2rem;
   font-size: 50px;
   color: rgb(197, 197, 197);
