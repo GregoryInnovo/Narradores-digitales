@@ -178,7 +178,7 @@ button {
    "conta1 conta2 conta3"
    "conta4 conta5 conta6"
    "conta7 conta8 conta9";
-   grid-gap: 0.3rem;
+   grid-gap: 0.7rem;
   margin-top: 1.5rem;
 
 }
@@ -188,6 +188,20 @@ button {
   background-size: cover;
   font-weight: bold;
   /* border: 10px solid red; */
+}
+
+.btn-style{
+  border-radius: 20px;
+  border: 2px solid grey;
+  -webkit-box-shadow: 1px 4px 8px 0px rgba(0,0,0,0.4); 
+  box-shadow: 1px 4px 8px 0px rgba(0,0,0,0.4);
+  transition: transform .2s;
+}
+
+.btn-style:hover{
+  -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, -8px 6px 8px 4px rgba(0,0,0,0); 
+  box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, -8px 6px 8px 4px rgba(0,0,0,0);
+  transform: scale(1.1);
 }
 
 .conta2 {
