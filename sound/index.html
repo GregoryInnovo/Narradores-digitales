@@ -1,49 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body{
-            margin: 0px;
-            padding: 0px;
-            overflow: hidden;
- 
-        }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grabar audio del micrófono</title>
 </head>
+
 <body>
-    
+    <br>
+    <div>
+        <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
+        <br><br>
+        <p id="duracion"></p>
+        <br>
+        <button id="btnComenzarGrabacion">Comenzar</button>
+        <button id="btnDetenerGrabacion">Detener</button>
+    </div>
+    <script src="index.js"></script>
 </body>
+
 </html>
- 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js"></script>
- 
-<script>
- 
-    var mic;
- 
-    function setup(){
-        mic = new p5.AudioIn();
-        mic.start();
-        createCanvas(600, 600);
-    }
- 
-    function draw(){
-        var val = mic.getLevel();
-        val = parseInt(map(val, 0, 0.5, 1, 15));
-        background('rgba(0, 0, 0, 0.1)');
- 
-        translate(-200,0);
-        fill(255);
-      console.log(val)
-        for(i=0; i<val; i++){
-            rect(i*15,0,20,-i*10);
-        }
- 
-    }
- 
-</script>

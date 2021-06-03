@@ -355,3 +355,8 @@ button {
   width:100%;
   height: auto;
 }
+
+.o-font-audio {
+  font-size: 1rem;
+  font-family: var(--bs-font-sans-serif);
+}

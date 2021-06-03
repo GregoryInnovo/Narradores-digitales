@@ -496,23 +496,31 @@
       </button>
     </div>
 
-    
-
     <div class="container-timer">
+      <div class="o-font-audio">
+        <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
+        <p id="duracion"></p>
+        <button id="btnComenzarGrabacion" style="display: none">
+          Comenzar
+        </button>
+        <button id="btnDetenerGrabacion" style="display: none">Detener</button>
+      </div>
+
       <p id="work" class="label">Tiempo restante:</p>
-<!--       <p id="break" class="label">Descanso:</p>
+      <!--       <p id="break" class="label">Descanso:</p>
       <p id="cycles" class="label">Ciclos:</p> -->
       <!--Timer del trabajo-->
-      <div id="work-timer" >
+      <div id="work-timer">
         <span id="w_minutes">0</span>
         <span class="semicolon">:</span>
         <span id="w_seconds">15</span>
       </div>
-      
-      <h2 class="o-title" style="text-align: center;">Configuración de la historia</h2>
+
+      <h2 class="o-title" style="text-align: center">
+        Configuración de la historia
+      </h2>
     </div>
 
-    
     <div class="o-grid-container">
       <button class="conta1 btn-style" id="scene1">Parque</button>
       <button class="conta2 btn-style" id="scene2">Casa</button>
@@ -524,9 +532,12 @@
       <button class="conta7 btn-style" id="charac4">Personaje 4</button>
       <button class="conta8 btn-style" id="charac5">Personaje 5</button>
       <button class="conta9 btn-style" id="charac6">Personaje 6</button>
+
+      <button id="character2">¿Segundo personaje?</button>
     </div>
     <!-- Footer -->
     <!-- <div class="cont-footer">
+      
       <div class="container px-4 py-5" id="icon-grid">
         <h2 class="pb-2 border-bottom"  style="TEXT-ALIGN: center;">Narraciones Digitales</h2>
 
@@ -564,6 +575,6 @@
     ></script>
     <!--  -->
     <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
-    <script src="./timer.js"></script>
+    <script src="./audio.js"></script>
   </body>
 </html>
