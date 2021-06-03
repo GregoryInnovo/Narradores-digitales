@@ -95,7 +95,6 @@ function jump() {
 // Función la cual empieza a grabar cuando se envie el valor 4
 function recordArduino() {
   recording = true;
-  noMoreConfig = true;
 }
 
 // Función pausa la historia
@@ -184,6 +183,7 @@ let togglePosY;
 let noMoreConfig;
 setup = () => {
   noMoreConfig = false;
+
   let renderer = createCanvas(cwidth / scaleX_size, cheight / scaleY_size);
 
   // Lo emparenta con el div
@@ -401,9 +401,9 @@ function toggleCharacterTwo() {
 
 }
 function record() {
-  noMoreConfig = true;
   // Añade un nuevo frame
   if (recording) {
+    noMoreConfig = true;
     encoder.addFrameRgba(
       drawingContext.getImageData(0, 0, encoder.width, encoder.height).data
     );

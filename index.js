@@ -41,4 +41,4 @@ arduinoSerialPort.on('data', (data) => {
     });
 });
 
-setTimeout( () => console.log(server), 1000);
+// setTimeout( () => console.log(server), 1000);
